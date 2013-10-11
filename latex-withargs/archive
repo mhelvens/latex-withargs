@@ -1,0 +1,61 @@
+#!/bin/bash
+
+DOC="withargs"
+
+FILES="$DOC.sty         \
+       $DOC.tex          \
+       $DOC.pdf           \
+       $DOC-dry.sty        \
+       $DOC-packagedoc.cls  \
+       README"
+
+VERSION=0.0.2
+
+### Zero out the checksum value
+#
+sed -r -i.bak 's/\\CheckSum\{[0-9]*\}/\\CheckSum\{0\}/;' $DOC.sty
+
+### First compilation
+#
+pdflatex $DOC
+
+### Find and put in the correct checksum
+#
+CHECKSUM=`cat $DOC.log | grep "The checksum should be" \
+                       | sed -r 's/[^0-9]*([0-9]*)[^0-9]*/\1/'`
+sed -r -i "s/\\CheckSum\{0\}/\\CheckSum\{$CHECKSUM\}/;" $DOC.sty
+
+### Create index
+#
+makeindex -s gglo.ist -o $DOC.gls $DOC.glo
+makeindex -s gind.ist -o $DOC.ind $DOC.idx
+
+### Final two compilations
+#
+pdflatex $DOC
+pdflatex $DOC
+
+### Move all temporary stuff to the tmp folder
+#
+mv *.aux tmp
+mv *.glo tmp
+mv *.gls tmp
+mv *.idx tmp
+mv *.ilg tmp
+mv *.ind tmp
+mv *.log tmp
+mv *.out tmp
+mv *.tmp tmp
+mv *.hd  tmp
+mv *.bak tmp
+
+### Tar it up
+#
+mkdir $DOC
+cp $FILES $DOC
+tar -czf $DOC-$VERSION.tar.gz $DOC
+rm -rf $DOC
+
+### Rename local pdf
+#
+mv $DOC.pdf $DOC-$VERSION.pdf
