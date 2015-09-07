@@ -24,7 +24,7 @@
 % Document Class                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\LoadClassWithOptions{l3doc}
+\LoadClassWithOptions{withargs-old-l3doc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Importing The Main Package                                                   %
@@ -280,6 +280,11 @@
 \interesting
 \AfterEndEnvironment{macrocode}{\vskip\belowdisplayskip\interesting\NoIndentAfterThis}
 
+%%% Short inline code listings
+%
+\lstMakeShortInline[style=examplecode]|
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Argument Specifiers and such                                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,6 +305,7 @@
 \newcommand{\describemetamacro}[2]{%
   \describeanymacro{\meta{#1}}{#2}%
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Other Stuff                                                                  %

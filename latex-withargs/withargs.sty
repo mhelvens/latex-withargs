@@ -46,7 +46,7 @@
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
 \RequirePackage{expl3}
-\ProvidesExplPackage{withargs}{2013/10/11}{0.0.2}
+\ProvidesExplPackage{withargs}{2015/09/07}{0.1.0}
   {an inline construct for passing token lists as TeX parameters}
 %    \end{macrocode}
 %
@@ -272,7 +272,7 @@
 %  We can then call the right variant of |\withargs:|.
 %
 %    \begin{macrocode}
-  \int_case:nnn {\l__with_arg_int} {
+  \int_case:nnF {\l__with_arg_int} {
     {1} { \__withargs_var:nx1{#1} {#2}                        {#9} }
     {2} { \__withargs_var:nx2{#1} {#2}{#3}                    {#9} }
     {3} { \__withargs_var:nx3{#1} {#2}{#3}{#4}                {#9} }

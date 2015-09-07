@@ -9,7 +9,7 @@ FILES="$DOC.sty         \
        $DOC-packagedoc.cls  \
        README"
 
-VERSION=0.0.2
+VERSION=0.1.0
 
 ### Zero out the checksum value
 #
@@ -37,6 +37,7 @@ pdflatex $DOC
 
 ### Move all temporary stuff to the tmp folder
 #
+mkdir -p tmp
 mv *.aux tmp
 mv *.glo tmp
 mv *.gls tmp
