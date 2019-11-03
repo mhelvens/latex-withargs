@@ -145,13 +145,13 @@ Here is an example demonstrating the possible expansion types:
 \def\foo{\bar}   \def\s{s}   \def\bar{ba\s}   \def\bas{FOO-BAR-BAS}
 
 \withargs (n     o     f     x     c     v   )
-	  [\foo][\foo][\foo][\foo][\foo][\foo] {
+          [\foo][\foo][\foo][\foo][\foo][\foo] {
     \begin{tabular}{llll}
         n: & \texttt{\detokenize{#1}} &   % no expansion
         o: & \texttt{\detokenize{#2}} \\  % expand once
         f: & \texttt{\detokenize{#3}} &   % expand until unexpandable
         x: & \texttt{\detokenize{#4}} \\  % exhaustive expansion
-        c: & \texttt{\detokenize{#5}} &   % \csname expansion
+        c: & \texttt{\detokenize{#5}} &   % \csname conversion
         v: & \texttt{\detokenize{#6}}     % `c', then `o'
     \end{tabular}
 }
@@ -177,9 +177,9 @@ and intentionally replicate the naming scheme.
 
 \begin{latex-example-show}
 \withargs (ccc) [\uniquecsname][\uniquecsname][\uniquecsname] {
-    \def #1{A}  \let\A#1
-    \def #2{B}
-    \def #3{C}
+    \def#1{A}  \let\A#1
+    \def#2{B}
+    \def#3{C}
     #3#2#1%
 }%
 (\A)
