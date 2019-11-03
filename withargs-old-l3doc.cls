@@ -1006,7 +1006,7 @@
   \char_set_lccode:nn { `\^^B } { `\\ }
   \char_set_lccode:nn { `\^^L } { `\{ }
   \char_set_lccode:nn { `\^^R } { `\} }
-  \tl_to_lowercase:n
+  \tex_lowercase:D
    {
     \group_end:
     \cs_set_protected:Npn \xmacro@code
@@ -1301,7 +1301,7 @@
   \bool_if:nT { \g__codedoc_implementation_bool && \g__codedoc_checkfunc_bool }
    {
     \typeout{ ======================================== ^^J }
-    \iow_open:Nn \g__codedoc_func_iow { \c_job_name_tl .cmds }
+    \iow_open:Nn \g__codedoc_func_iow { \c_sys_jobname_str .cmds }
 
     \tl_clear:N \l__codedoc_tmpa_tl
     \seq_map_inline:Nn \g_doc_functions_seq
@@ -1430,7 +1430,7 @@
 \msg_new:nnn {l3doc} {print-index-howto}
  {
   Generate~the~index~by~executing\\
-  \iow_indent:n { makeindex~-s~l3doc.ist~-o~\c_job_name_tl .ind~\c_job_name_tl .idx }
+  \iow_indent:n { makeindex~-s~l3doc.ist~-o~\c_sys_jobname_str .ind~\c_sys_jobname_str .idx }
  }
 \tl_gput_right:Nn \PrintIndex { \AtEndDocument{ \msg_info:nn {l3doc} {print-index-howto} } }
 \GlossaryPrologue
@@ -1443,7 +1443,7 @@
 \msg_new:nnn {l3doc} {print-changes-howto}
  {
   Generate~the~change~list~by~executing\\
-  \iow_indent:n { makeindex~-s~gglo.ist~-o~\c_job_name_tl .gls~\c_job_name_tl .glo }
+  \iow_indent:n { makeindex~-s~gglo.ist~-o~\c_sys_jobname_str .gls~\c_sys_jobname_str .glo }
  }
 \tl_gput_right:Nn \PrintChanges { \AtEndDocument{ \msg_info:nn {l3doc} {print-changes-howto} } }
 \bool_if:NTF \g__codedoc_full_bool

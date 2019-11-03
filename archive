@@ -9,7 +9,7 @@ FILES="$DOC.sty         \
        $DOC-packagedoc.cls  \
        README"
 
-VERSION=0.2.0
+VERSION=0.3.0
 
 ### Zero out the checksum value
 #
@@ -37,7 +37,7 @@ pdflatex ${DOC}
 
 ### Reuse the README.md file for the archived plain-text README
 #
-cp ../README.md ./README
+cp ./README.md ./README
 
 ### Move all temporary stuff to the tmp folder
 #
@@ -58,6 +58,7 @@ mv *.bak tmp
 #
 mkdir ${DOC}
 cp ${FILES} ${DOC}
+rm README
 tar -czf ${DOC}-${VERSION}.tar.gz ${DOC}
 rm -rf ${DOC}
 
