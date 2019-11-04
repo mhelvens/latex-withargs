@@ -30,6 +30,20 @@
 	withargs:nn,withargs:cn
 }
 
+% Ugly hack, because of the unfortunate deprecation of 'n' to 'c' conversion,
+% plus the fact that kernel errors, even non-fatal ones, cannot be redirected.
+% Will think of a better solution at some point, but not now.
+\ExplSyntaxOn
+\let\__withargs_docs_old_kernel_msg_error:nnnnnn\__kernel_msg_error:nnnnnn
+\def\__kernel_msg_error:nnnnnn#1#2{
+  \str_if_eq:nnTF { #1/#2 } { kernel/deprecated-variant }{
+    \__kernel_msg_warning:nnnnnn{#1}{#2}
+  }{
+    \__withargs_docs_old_kernel_msg_error:nnnnnn{#1}{#2}
+  }
+}
+\ExplSyntaxOff
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Global Changes                                                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,6 +58,9 @@
   {adjusted code to new version of expl3}
 
 \changes{0.2.0}{2016/12/19}
+  {adjusted code to new version of expl3}
+
+\changes{0.3.1}{2019/11/04}
   {adjusted code to new version of expl3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
