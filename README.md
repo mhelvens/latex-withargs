@@ -9,7 +9,6 @@ Author        : Michiel Helvensteijn  (www.mhelvens.net)
 
 To use this package, you need the following expl3 packages:
 * expl3
-* l3regex
 * xparse
 
 To generate the documentation some extra packages are needed.
