@@ -36,5 +36,5 @@ generate the documentation yourself, run LaTeX on withargs.tex.
 ##### License #####
 
 This material is subject to the LaTeX Project Public License. See
-http://www.ctan.org/tex-archive/help/Catalogue/licenses.lppl.html 
+https://www.latex-project.org/lppl
 for the details of that license.
