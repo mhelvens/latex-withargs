@@ -1,6 +1,6 @@
-LaTeX Package : withargs 0.2.0
+LaTeX Package : withargs 0.3.1
 
-Last Modified : 2016-12-19
+Last Modified : 2019-11-04
 
 Author        : Michiel Helvensteijn  (www.mhelvens.net)
 

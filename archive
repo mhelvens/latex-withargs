@@ -9,7 +9,7 @@ FILES="$DOC.sty         \
        $DOC-packagedoc.cls  \
        README"
 
-VERSION=0.3.0
+VERSION=0.3.1
 
 ### Zero out the checksum value
 #
